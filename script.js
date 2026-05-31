@@ -1,19 +1,35 @@
 const container = document.querySelector(".container");
 
-container.addEventListener("click", function(event){
+container.addEventListener("click", function(e){
 
-    if(event.target.classList.contains("add-btn")){
+    if(e.target.classList.contains("add-btn")){
 
-        if(event.target.innerText === "Add Friend"){
+        const card = e.target.closest(".card");
 
-            event.target.innerText = "Friends";
-            event.target.style.backgroundColor = "green";
+        const status =
+        card.querySelector(".status");
+
+        if(e.target.innerText === "Add Friend"){
+
+            e.target.innerText = "Remove Friend";
+
+            e.target.style.backgroundColor =
+            "green";
+
+            status.innerText = "Friend";
+
+            status.classList.add("friend");
 
         }else{
 
-            event.target.innerText = "Add Friend";
-            event.target.style.backgroundColor = "#3498db";
+            e.target.innerText = "Add Friend";
 
+            e.target.style.backgroundColor =
+            "#3498db";
+
+            status.innerText = "Stranger";
+
+            status.classList.remove("friend");
         }
     }
 
